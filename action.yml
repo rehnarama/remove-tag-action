@@ -4,6 +4,7 @@ inputs:
   tag:  # id of input
     description: 'The tag to remove'
     required: true
+    default: 'latest'
   GITHUB_TOKEN:
     description: 'GitHub Auth Token'
     required: true

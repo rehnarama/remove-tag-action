@@ -14,6 +14,11 @@ async function run() {
       repo: context.repo.repo,
       ref: `tags/${tagToDelete}`
     });
+    await octokit.repos.deleteRelease({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      release_id: `${tagToDelete}`
+    });
   } catch (error) {
     core.setFailed(error.message);
   }
