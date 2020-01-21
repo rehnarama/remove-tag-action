@@ -1,8 +1,8 @@
 name: 'Remove Tag'
-description: 'Removes a tag on the GitHub repo (e.g. "latest")'
+description: 'Removes a tag and respective releases on the GitHub repo (e.g. "latest")'
 inputs:
   tag:  # id of input
-    description: 'The tag to remove'
+    description: 'The name of the tag with corresponding release to delete'
     required: true
     default: 'latest'
   GITHUB_TOKEN:

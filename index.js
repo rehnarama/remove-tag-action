@@ -9,15 +9,20 @@ async function run() {
     const octokit = new github.GitHub(GITHUB_TOKEN);
     const context = github.context;
 
-    await octokit.git.deleteRef({
+    const release = await octokit.repos.getReleaseByTag({
       owner: context.repo.owner,
       repo: context.repo.repo,
-      ref: `tags/${tagToDelete}`
+      tag: `${tagToDelete}`
     });
     await octokit.repos.deleteRelease({
       owner: context.repo.owner,
       repo: context.repo.repo,
-      release_id: `${tagToDelete}`
+      release_id: release.id
+    });
+    await octokit.git.deleteRef({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      ref: `tags/${tagToDelete}`
     });
   } catch (error) {
     core.setFailed(error.message);
