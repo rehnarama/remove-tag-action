@@ -12,7 +12,7 @@ async function run() {
     await octokit.git.deleteRef({
       owner: context.repo.owner,
       repo: context.repo.repo,
-      ref: tagToDelete
+      ref: `tags/${tagToDelete}`
     });
   } catch (error) {
     core.setFailed(error.message);
