@@ -1,0 +1,12 @@
+name: 'Remove Tag'
+description: 'Removes a tag on the GitHub repo (e.g. "latest")'
+inputs:
+  tag:  # id of input
+    description: 'The tag to remove'
+    required: true
+  GITHUB_TOKEN:
+    description: 'GitHub Auth Token'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
